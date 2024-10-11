@@ -1448,6 +1448,26 @@ cdef class _DrawList(object):
             NULL
         )
 
+    def add_text_with_font_size(
+            self,
+            float pos_x, float pos_y,
+            cimgui.ImU32 col,
+            str text,
+            float font_size
+    ):
+        """Add text to the draw list with front size.
+        """
+        self._ptr.AddText(
+            NULL,
+            font_size,
+            _cast_args_ImVec2(pos_x, pos_y),
+            col,
+            _bytes(text),
+            NULL,
+            0.0,
+            NULL
+        )
+
     def add_image(self,
         texture_id,
         tuple a,
